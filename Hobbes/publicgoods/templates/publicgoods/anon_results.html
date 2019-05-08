@@ -1,0 +1,29 @@
+{% extends "publicgoods/base_generic.html" %}
+
+{% block content %}
+
+<h1 class="instance_name">{{ instance.instance_name }}</h1>
+
+Number of players: {{ number_responses }}. <br><br>
+
+Total number of points contributed: {{ total_contribution }}. <br><br>
+
+These contributed points are multipled by {{ instance.pot_multiplier }} to yield {{ total_pot }} points, which are distributed evenly among all participants. <br><br>
+
+This means that each of the {{ number_responses }} participants receives {{ return_per_player }} from the public good. <br><br>
+
+<table class="results">
+	<tr class="results"><th class="results">Pseudonym</th><th class="results">Contribution</th><th class="results">Final Score</th></tr>
+
+	{% for res in results %}
+	<tr class="results">
+		<td class="results">{{ res.player.pseudonym }}</td>
+		<td class="results">{{ res.player.contribution }}</td>
+		<td class="results">{{ res.payout }}</td>
+	</tr>
+	{% empty %}
+	<td class="results" colspan="5" style="text-align: center;">No players joined the game.</td>
+	{% endfor %}
+</table>
+
+{% endblock %}

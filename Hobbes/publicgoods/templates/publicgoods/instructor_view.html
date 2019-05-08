@@ -1,0 +1,39 @@
+{% extends "publicgoods/base_generic.html" %}
+
+{% block content %}
+
+<h1 class="instance_name">{{ instance.instance_name }}</h1>
+
+<br>
+
+Number of players participating so far: {{ number_responses }}.  Refresh this page to see up-to-date participation information. <br><br>
+
+{% if instance.available %}
+Close the game by <a href="{% url 'close_instance' instance.id %}">clicking here</a>.  Closing the game will prevent additional participation and will allow everyone to view anonymized results.  <br><br> 
+{% endif %}
+
+<table class="results">
+	<tr class="resultis">
+		<th class="results">Name</th>
+		<th class="results">eid</td>
+		<th class="results">Pseudonym</th>
+		<th class="results">Contribution</th>
+		<th class="results">Final Score</th>
+		<th class="results"></th>
+	</tr>
+
+	{% for res in results %}
+	<tr class="results">
+		<td class="results">{{ res.player.name }}</td>
+		<td class="results">{{ res.player.eid }}</td>
+		<td class="results">{{ res.player.pseudonym }}</td>
+		<td class="results">{{ res.player.contribution }}</td>
+		<td class="results">{{ res.payout }}</td>
+		<td class="results"><a href="{% url 'delete_response' instance.id res.player.id %}"><font size="-1">delete</font></a></td>
+	</tr>
+	{% empty %}
+	<td class="results" colspan="6" style="text-align: center;">No players have joined the game.</td>
+	{% endfor %}
+</table>
+
+{% endblock %}

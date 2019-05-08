@@ -1,0 +1,133 @@
+/*@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+	/*font-family:'Source Sans Pro', sans-serif;*/
+        font-family:'Montserrat', sans-serif;
+        margin-top: 0%;
+	margin-left: 0%;
+	margin-right: 0%;
+	background-color: white;
+	width: 100%;
+}
+
+div.banner {
+    background-color: #f2f2f2;
+    height: 8em;
+    line-height: 8em;
+}
+
+div.title {
+    font-size: xx-large;
+    font-weight: bold;
+    margin-left: 20%;
+    /*text-align: center;*/
+}
+
+span.vertcenter {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.container {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 1em;
+    min-width: 600px;
+}
+
+.left {
+    width: 39%;
+    float: left;
+}
+
+.middle {
+    width: 2%;
+    float: left;
+}
+
+.right {
+    /*margin-left: 40%;*/
+    float: left;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin:0;
+}
+
+h1.instance_name {
+    text-align: center;
+}
+
+table.results {
+	border-collapse: collapse;
+	/*width: 70%;*/
+	/*margin-left: 3em;*/
+        margin-left: auto;
+        margin-right: auto;
+}
+
+th.results, td.results {
+	border-bottom: 1px solid #ddd;
+	padding: .5em;
+	text-align: left;
+}
+
+th.results {
+	background-color: #666666;
+	color:white;
+}
+
+.results tr:nth-child(even) {background-color: #f2f2f2; }
+.results tr:nth-child(odd) {background-color: white; }
+
+ul {
+    margin: 1em;
+    padding: 0em;
+}
+
+li {
+    margin: .25em;
+}
+
+table.form {
+    text-align: left;
+}
+
+div.offset {
+    margin-left: 2em;
+}
+
+div.centercol {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30em;
+}
+
+.centerFlex {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+a.title:link {
+  text-decoration: none;
+  color: black;
+}
+
+a.title:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a.title:hover {
+  text-decoration: none;
+  color: black;
+}
+
+a.title:active {
+  text-decoration: none;
+  color: black;
+}

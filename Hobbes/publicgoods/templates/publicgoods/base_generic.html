@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'publicgoods/style.css' %}">
+    
+    {% block title %}<title>Hobbes</title>{% endblock %}
+</head>
+
+<body>
+    
+    <div class="banner">
+        <div class="title"><span class="vertcenter"><font size="+5"><a href="{% url 'index' %}" class="title">Hobbes</a></font></span></div>
+    </div>
+
+    <section class="container">
+    {% block content %} {% endblock %}
+    </section>
+</body>
+
+</html>

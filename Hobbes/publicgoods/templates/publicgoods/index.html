@@ -1,0 +1,45 @@
+{% extends "publicgoods/base_generic.html" %}
+
+{% block content %}
+
+
+    <div class="left">
+        <p>Hobbes enables large classes to participate in <a href="https://en.wikipedia.org/wiki/Public_goods_game">public goods games</a> in real-time.</p>
+        
+        <p>If you are an instructor, <a href="{% url 'create' %}">click here</a> to create a new game.</p>
+
+        <p>If you are a student, select the game you'd like to participate in from the list to the right.
+
+    </div>
+
+    <div class="middle">&nbsp;</div>
+
+    <div class="right">
+        <h2>Games in progress:</h2>
+        <ul>
+        {% for instance in open_instances %}
+            <li><font size="+1"> {{ instance.instance_name }} </font>
+            <br>&nbsp;&nbsp; <font size="-1">
+            <a href = "{% url 'play_game' instance.id %}">Participate</a>
+            <a href = "{% url 'instructor_view' instance.id %}">Instructor Control Panel</a></font>
+            </li>
+        {% empty %}
+        &nbsp; &nbsp; None
+        {% endfor %}
+        </ul>
+
+        <h2>Completed games:</h2>
+        <ul>
+        {% for instance in closed_instances %}
+            <li><font size="+1"> {{ instance.instance_name }}</font>
+            <br>&nbsp;&nbsp; <font size="-1">
+            <a href = "{% url 'anon_results' instance.id %}">Anonymized Results</a>
+            <a href = "{% url 'instructor_view' instance.id %}">Instructor Control Panel</a></font>
+        </li>
+        {% empty %}
+        &nbsp; &nbsp; None
+        {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

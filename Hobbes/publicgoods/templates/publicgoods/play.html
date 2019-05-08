@@ -1,0 +1,45 @@
+{% extends "publicgoods/base_generic.html" %}
+
+{% block content %}
+
+<div class="centerFlex"><h1>{{ instance.instance_name }}</h1></div>
+
+
+{% if success %}
+
+You successfully contributed <strong>{{ contribution }}</strong> points to the public good.
+
+<br><br>
+
+Your pseudonym is <strong>{{ pseudonym }}</strong>.  Remember this name so that you can see your final score.
+
+<br><br>
+
+When your instructor has marked the game as completed you will be able to see all contributions and scores <a href="{% url 'anon_results' instance.id %}">here</a>.
+
+{% else %}
+
+You are given <strong>{{ instance.endowment }}</strong> points.
+
+<br><br>
+
+You can choose to donate between 0 and <strong>{{ instance.max_contribution }}</strong> points to the community pot.
+
+<br><br>
+
+All contributed points will be multipled by <strong>{{ instance.pot_multiplier }}</strong> and then distributed evenly to everyone who participates in the game.
+
+<br><br>
+
+<div class="centerFlex">
+<form action="" method="post">
+	{% csrf_token %}
+	<table class="form">
+		{{ form.as_table }}
+	</table>
+        <div class="centerFlex"><input type="submit" value="Submit" name="{{ button_name }}"></div>
+</form>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "publicgoods/base_generic.html" %}
+
+{% block content %}
+
+<div class="centerFlex">
+
+    <form action="" method="post">
+	{% csrf_token %}
+	<table class="form">
+		{{ form.as_table }}
+	</table>
+        <div class="centerFlex"><input type="submit" value="Create Game"></div>
+</form>
+
+</div>
+
+{% endblock %}
