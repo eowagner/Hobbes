@@ -8,7 +8,7 @@ from publicgoods.forms import CreateInstanceForm, ParticipateForm, InstructorVie
 
 from gametheory import nplayergame
 
-from publicgoods.tests import fullOnlineTest
+#from publicgoods.tests import fullOnlineTest
 
 def index(request):
     #open_instances = Game_Instance.objects.all()
@@ -127,7 +127,7 @@ def anon_results(request, instance_id):
     context = nplayergame.get_game_outcome_context(instance_id)
     return render(request, 'publicgoods/anon_results.html', context)
 
-def online_test(request):
-    fullOnlineTest()
-    return HttpResponseRedirect('/publicgoods/')
-
+#def online_test(request):
+#    fullOnlineTest()
+#    return HttpResponseRedirect('/publicgoods/')
+#
