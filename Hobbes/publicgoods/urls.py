@@ -11,4 +11,5 @@ urlpatterns = [
     path('play/<int:instance_id>/', views.play_game, name='play_game'),
     #path('online_test/', views.online_test, name="online_test"),
     path('anon_results/<int:instance_id>/', views.anon_results, name='anon_results'),
+    path('delete_instance/<int:instance_id>/', views.delete_instance, name='delete_instance')
 ]

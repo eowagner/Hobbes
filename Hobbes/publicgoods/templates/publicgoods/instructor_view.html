@@ -6,10 +6,16 @@
 
 <br>
 
-Number of players participating so far: {{ number_responses }}.  Refresh this page to see up-to-date participation information. <br><br>
 
 {% if instance.available %}
+Number of players participating so far: {{ number_responses }}.  
+<br><br>
+
+Refresh this page to see up-to-date participation information. <br><br>
+
 Close the game by <a href="{% url 'close_instance' instance.id %}">clicking here</a>.  Closing the game will prevent additional participation and will allow everyone to view anonymized results.  <br><br> 
+{% else %}
+Number of participants: {{ numer_responses}}. <br><br>
 {% endif %}
 
 <table class="results">
@@ -35,5 +41,6 @@ Close the game by <a href="{% url 'close_instance' instance.id %}">clicking here
 	<td class="results" colspan="6" style="text-align: center;">No players have joined the game.</td>
 	{% endfor %}
 </table>
+
 
 {% endblock %}

@@ -127,6 +127,14 @@ def anon_results(request, instance_id):
     context = nplayergame.get_game_outcome_context(instance_id)
     return render(request, 'publicgoods/anon_results.html', context)
 
+def delete_instance(request, instance_id):
+    instance = get_object_or_404(Game_Instance, pk=instance_id)
+    Game_Response.objects.filter(game_id=instance).delete()
+    instance.delete()
+
+    return HttpResponseRedirect('/publicgoods/')
+
+
 #def online_test(request):
 #    fullOnlineTest()
 #    return HttpResponseRedirect('/publicgoods/')
