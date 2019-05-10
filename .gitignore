@@ -2,7 +2,7 @@ env
 __pycache__/
 *.py[cod]
 
-migrations
+
 
 db.sqlite3
 .env
