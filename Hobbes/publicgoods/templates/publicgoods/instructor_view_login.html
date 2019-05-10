@@ -3,15 +3,17 @@
 {% block content %}
 
 <br>
-<h1>Login to {{ instance.instance_name }}</h1>
+<div class="centerFlex"><h1>Login to {{ instance.instance_name }}</h1></div>
 <br>
 
+<div class="centerFlex">
 <form action="" method="post">
 	{% csrf_token %}
 	<table class="form">
 		{{ form.as_table }}
 	</table>
-        <input type="submit" value="Log in">
+        <div class="centerFlex"><input type="submit" value="Log in"></div>
 </form>
+</div>
 
 {% endblock %}

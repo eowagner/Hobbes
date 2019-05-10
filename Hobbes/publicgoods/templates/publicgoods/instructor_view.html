@@ -6,17 +6,27 @@
 
 <br>
 
+Parameters:
+<div class="offset">
+<ul>
+    <li>Pot multiplier: {{ instance.pot_multiplier }}.</li>
+    <li>Initial endowment: {{ instance.endowment }}.</li>
+    <li>Maximum contribution: {{ instance.max_contribution }}.</li>
+</ul>
+</div>
 
 {% if instance.available %}
-Number of players participating so far: {{ number_responses }}.  
+Number of players participating so far: <strong>{{ number_responses }}</strong>.  
 <br><br>
 
 Refresh this page to see up-to-date participation information. <br><br>
 
-Close the game by <a href="{% url 'close_instance' instance.id %}">clicking here</a>.  Closing the game will prevent additional participation and will allow everyone to view anonymized results.  <br><br> 
+End the game by <a href="{% url 'close_instance' instance.id %}">clicking here</a>.  Ending the game will prevent additional participation and will allow everyone to view anonymized results.  <br><br> 
 {% else %}
-Number of participants: {{ numer_responses}}. <br><br>
+Number of participants: <strong>{{ numer_responses}}</strong>. <br><br>
 {% endif %}
+
+<br>
 
 <table class="results">
 	<tr class="resultis">

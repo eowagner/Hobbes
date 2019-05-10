@@ -20,7 +20,7 @@
         {% for instance in open_instances %}
             <li><font size="+1"> {{ instance.instance_name }} </font>
             <br>&nbsp;&nbsp; <font size="-1">
-            <a href = "{% url 'play_game' instance.id %}">Participate</a>
+            <a href = "{% url 'play_game' instance.id %}">Participate</a> &nbsp; | &nbsp; 
             <a href = "{% url 'instructor_view' instance.id %}">Instructor Control Panel</a></font>
             </li>
         {% empty %}
@@ -33,7 +33,7 @@
         {% for instance in closed_instances %}
             <li><font size="+1"> {{ instance.instance_name }}</font>
             <br>&nbsp;&nbsp; <font size="-1">
-            <a href = "{% url 'anon_results' instance.id %}">Anonymized Results</a>
+            <a href = "{% url 'anon_results' instance.id %}">Anonymized Results</a> &nbsp; | &nbsp; 
             <a href = "{% url 'instructor_view' instance.id %}">Instructor Control Panel</a></font>
         </li>
         {% empty %}
