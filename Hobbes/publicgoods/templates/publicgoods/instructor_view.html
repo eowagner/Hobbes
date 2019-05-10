@@ -6,8 +6,6 @@
 
 <br>
 
-Parameters:
-<div class="offset">
 <ul>
     <li>Number of participants: {{ number_responses }}. </li>
     <li>Total contributions: {{ total_contribution }}.</li>
@@ -15,7 +13,6 @@ Parameters:
     <li>Initial endowment: {{ instance.endowment }}.</li>
     <li>Maximum contribution: {{ instance.max_contribution }}.</li>
 </ul>
-</div>
 
 {% if instance.available %}
 End the game by <a href="{% url 'close_instance' instance.id %}">clicking here</a>.  Ending the game will prevent additional participation and will allow everyone to view anonymized results.  <br><br> 
