@@ -8,6 +8,8 @@ from publicgoods.forms import CreateInstanceForm, ParticipateForm, InstructorVie
 
 from gametheory import nplayergame
 
+from publicgoods.tests import fullOnlineTest
+
 def index(request):
     #open_instances = Game_Instance.objects.all()
     open_instances = Game_Instance.objects.filter(available=True).order_by('-time_opened')
@@ -53,14 +55,14 @@ def instructor_view(request, instance_id=None, response_id=None, close_id=None):
             instance.time_closed = timezone.now()
             instance.save()
         
-        context = nplayergame.get_game_outcome_context(instance_id)
+        context = nplayergame.get_game_outcome_context(instance_id, order_by='name')
         return render(request, 'publicgoods/instructor_view.html', context)
     else:
         if request.method == 'POST':
             form = InstructorViewLoginForm(request.POST, instructor_password=instance.instructor_password)
 
             if form.is_valid():
-                context = nplayergame.get_game_outcome_context(instance_id)
+                context = nplayergame.get_game_outcome_context(instance_id, order_by='name')
                 request.session['logged_in_to'] = instance_id
                 return render(request, 'publicgoods/instructor_view.html', context)
         
@@ -125,4 +127,7 @@ def anon_results(request, instance_id):
     context = nplayergame.get_game_outcome_context(instance_id)
     return render(request, 'publicgoods/anon_results.html', context)
 
+def online_test(request):
+    fullOnlineTest()
+    return HttpResponseRedirect('/publicgoods/')
 

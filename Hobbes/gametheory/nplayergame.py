@@ -2,9 +2,9 @@ from django.shortcuts import get_object_or_404
 from publicgoods.models import Game_Instance, Game_Response
 from decimal import Decimal
 
-def get_game_outcome_context(instance_id):
+def get_game_outcome_context(instance_id, order_by='pseudonym'):
     instance = get_object_or_404(Game_Instance, pk=instance_id)
-    players = Game_Response.objects.filter(game_id=instance)
+    players = Game_Response.objects.filter(game_id=instance).order_by(order_by)
     
     strats = list(map(lambda x: x.contribution, players))
 
