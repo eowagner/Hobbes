@@ -1,4 +1,4 @@
-Django==2.2.1
-gunicorn==19.9.0
-psycopg2-binary==2.8.2
-whitenoise==4.1.2
+django
+gunicorn
+dj_database_url
+whitenoise
