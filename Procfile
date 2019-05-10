@@ -1,1 +1,1 @@
-web: gunicorn Hobbes.wsgi --log-file
+web: gunicorn Hobbes.wsgi --log-file -
