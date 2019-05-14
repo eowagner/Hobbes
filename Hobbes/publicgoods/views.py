@@ -33,30 +33,15 @@ def create_game(request):
     context = {'form': form}
     return render(request, 'publicgoods/create_game.html', context)
 
-def instructor_view(request, instance_id=None, response_id=None, close_id=None):
-    if not close_id is None:
-        instance_id = close_id
-
+def instructor_view(request, instance_id):
     instance = get_object_or_404(Game_Instance, pk=instance_id)
 
     loggedto = request.session.get('logged_in_to', None)
 
-    if loggedto is not None and loggedto==instance_id:
-       
-        #if response_id is not none, then delete the corresponding response
-        if not response_id is None:
-            try:
-                Game_Response.objects.get(pk=response_id).delete()
-            except Game_Response.DoesNotExist:
-                pass
-
-        if not close_id is None:
-            instance.available = False;
-            instance.time_closed = timezone.now()
-            instance.save()
-        
+    if loggedto==instance_id:
         context = nplayergame.get_game_outcome_context(instance_id, order_by='name')
         return render(request, 'publicgoods/instructor_view.html', context)
+
     else:
         if request.method == 'POST':
             form = InstructorViewLoginForm(request.POST, instructor_password=instance.instructor_password)
@@ -65,13 +50,37 @@ def instructor_view(request, instance_id=None, response_id=None, close_id=None):
                 context = nplayergame.get_game_outcome_context(instance_id, order_by='name')
                 request.session['logged_in_to'] = instance_id
                 return render(request, 'publicgoods/instructor_view.html', context)
-        
+
         else:
             form = InstructorViewLoginForm(instructor_password=instance.instructor_password)
-        
+
         context = {'form': form, 'instance': instance}
         return render(request, 'publicgoods/instructor_view_login.html', context)
 
+def close_instance(request, instance_id):
+    loggedto = request.session.get('logged_in_to', None)
+
+    if loggedto==instance_id:
+        instance = get_object_or_404(Game_Instance, pk=instance_id)
+
+        instance.available = False;
+        instance.time_closed = timezone.now()
+        instance.save()
+
+    return HttpResponseRedirect('/publicgoods/instructor_view/' + str(instance_id))
+
+def delete_response(request, instance_id, response_id):
+    loggedto = request.session.get('logged_in_to', None)
+
+    if loggedto==instance_id:
+        instance = get_object_or_404(Game_Instance, pk=instance_id)
+
+        try:
+            Game_Response.objects.get(pk=response_id).delete()
+        except Game_Response.DoesNotExist:
+            pass
+        
+    return HttpResponseRedirect('/publicgoods/instructor_view/' + str(instance_id))
 
 def play_game(request, instance_id):
     instance = get_object_or_404(Game_Instance, pk=instance_id)
